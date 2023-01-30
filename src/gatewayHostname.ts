@@ -1,4 +1,4 @@
-import { HASH_TO_TEST } from './constants'
+import {getCID} from './getCIDByUrl'
 
 function gatewayHostname (url: URL): string {
   let urlString: string = url.toString()
@@ -7,8 +7,8 @@ function gatewayHostname (url: URL): string {
     urlString = url.hostname.toString()
   }
 
-  return urlString.replace(`${HASH_TO_TEST}.ipfs.`, '') // skip .ipfs. in subdomain gateways
-    .replace(`${HASH_TO_TEST}.`, '') // path-based
+  return urlString.replace(`${getCID()}.ipfs.`, '') // skip .ipfs. in subdomain gateways
+    .replace(`${getCID()}.`, '') // path-based
 }
 
 export { gatewayHostname }

@@ -10,8 +10,8 @@ import { UiComponent } from './UiComponent'
 
 import { Log } from './Log'
 import { gatewayHostname } from './gatewayHostname'
-import { HASH_TO_TEST } from './constants'
 import { IPNSCheck } from './Ipns'
+import {getCID} from './getCIDByUrl'
 
 const log = new Log('GatewayNode')
 
@@ -54,7 +54,7 @@ class GatewayNode extends UiComponent /* implements Checkable */ {
     this.tag.append(this.trustless.tag)
 
     this.link = document.createElement('div')
-    const gatewayAndHash = gateway.replace(':hash', HASH_TO_TEST)
+    const gatewayAndHash = gateway.replace(':hash', getCID())
     this.link.url = new URL(gatewayAndHash)
     this.link.textContent = gatewayHostname(this.link.url)
     this.link.className = 'Link'

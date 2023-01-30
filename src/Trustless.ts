@@ -1,10 +1,11 @@
 import fetchPonyfill from 'fetch-ponyfill'
 
 import { CheckBase } from './CheckBase'
-import { HASH_TO_TEST, TRUSTLESS_RESPONSE_TYPES } from './constants'
+import { TRUSTLESS_RESPONSE_TYPES } from './constants'
 import type { GatewayNode } from './GatewayNode'
 
 import { Log } from './Log'
+import {getCID} from './getCIDByUrl'
 
 const { fetch } = fetchPonyfill()
 
@@ -19,7 +20,7 @@ class Trustless extends CheckBase implements Checkable {
 
   async check (): Promise<void> {
     const now = Date.now()
-    const gatewayAndHash = this.parent.gateway.replace(':hash', HASH_TO_TEST)
+    const gatewayAndHash = this.parent.gateway.replace(':hash', getCID())
     this.parent.tag.classList.add('trustless')
     try {
       const trustlessResponseTypesTests = await Promise.all(TRUSTLESS_RESPONSE_TYPES.map(

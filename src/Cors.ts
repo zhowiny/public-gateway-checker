@@ -1,10 +1,11 @@
 import fetchPonyfill from 'fetch-ponyfill'
 
 import { CheckBase } from './CheckBase'
-import { HASH_STRING, HASH_TO_TEST } from './constants'
+import { HASH_STRING } from './constants'
 import type { GatewayNode } from './GatewayNode'
 
 import { Log } from './Log'
+import {getCID} from './getCIDByUrl'
 
 const { fetch } = fetchPonyfill()
 
@@ -19,7 +20,7 @@ class Cors extends CheckBase implements Checkable {
 
   async check (): Promise<void> {
     const now = Date.now()
-    const gatewayAndHash = this.parent.gateway.replace(':hash', HASH_TO_TEST)
+    const gatewayAndHash = this.parent.gateway.replace(':hash', getCID())
     const testUrl = `${gatewayAndHash}?now=${now}#x-ipfs-companion-no-redirect`
     // response body can be accessed only if fetch was executed when
     // liberal CORS is present (eg. '*')
