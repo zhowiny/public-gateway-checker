@@ -244,7 +244,7 @@ div.metrics-notification-wrapper a {
   color: #073A53;
 }
 
-div.metrics-notification-wrapper .metrics-notification-buttons button {
+div.metrics-notification-wrapper .metrics-notification-buttons button, .check-gateways-button {
   border: none;
   color: #3B8C90;
   cursor: pointer;
@@ -258,10 +258,13 @@ div.metrics-notification-wrapper .metrics-notification-buttons button {
   padding: 11px 20px;
 }
 
-.metrics-notification-wrapper .metrics-notification-buttons button.primary {
+.metrics-notification-wrapper .metrics-notification-buttons button.primary, button.primary {
   background-color: #3B8C90;
   color: rgba(246, 248, 251, 1);
   font-weight: 600;
+}
+button.check-gateways-button[disabled] {
+  background-color: #999;
 }
 
 .metrics-notification-wrapper .metrics-notification-buttons button#metrics-notification-preferences-save {

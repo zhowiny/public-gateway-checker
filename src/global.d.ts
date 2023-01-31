@@ -30,7 +30,6 @@ interface Visible {
 interface Window {
   OnScriptloaded: typeof import('./onScriptLoaded').onScriptLoaded
   checker: import('./Checker').Checker
-  checkGateways: () => void
 }
 
 declare namespace IpfsGeoip {
